@@ -2,15 +2,15 @@
 
 import pygame
 import sys
-from network import Network
-from TCG_classes import *
+from data.network import Network
+from data.TCG_classes import *
 from TCG_config import *
 
 width = 1600
 height = 800
 win = pygame.display.set_mode((width, height))
 
-pygame.display.set_caption("Trading Card Game Leage")
+pygame.display.set_caption("Trading Card Game")
 
 def redrawWindow(win,players,d):
     win.fill((255,255,255))
@@ -23,7 +23,7 @@ def redrawWindow(win,players,d):
 
 def main():
     run = True
-    look = 'cards/429px-Magic_card_back.bmp'
+    look = back_filename
 
     n = Network()
     p = n.getP()
@@ -42,6 +42,7 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
+                sys.exit()
 
             d.drag(event)
             d.standby(event)

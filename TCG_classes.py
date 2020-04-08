@@ -2,6 +2,8 @@
 
 import pygame
 import random
+import sys
+sys.path.append("..")
 from TCG_config import *
 
 pygame.font.init()
@@ -220,7 +222,7 @@ class Token(Card):
         self.offset_x = 0
         self.offset_y = 0
         self.rectangle_draging = False
-        self.back = grayback_filename
+        self.back = token_filename
         self.show = self.back
         self.standingby = False
         self.tapped = False
@@ -252,7 +254,7 @@ class Deck():
         self.player = player
         self.cardlist = []
         self.deckfile = decklist_filename
-        self.lands = lands
+        self.repeat = repeat
         self.back = back_filename
         self.standingby = False
         self.rectangle_draging = False
@@ -265,8 +267,8 @@ class Deck():
         handle = open(self.deckfile,'r')
         decklist = handle.read().split('\n')[:-1]
         handle.close()
-        for key in list(self.lands.keys()):
-            for i in range(0,lands[key]):
+        for key in list(self.repeat.keys()):
+            for i in range(0,repeat[key]):
                 self.cardlist.append(Card(0,0,self.back,key,self.player))
         for crd in decklist:
             self.cardlist.append(Card(0,0,self.back,decklist_dir+crd,self.player))

@@ -2,10 +2,11 @@
 
 import socket
 from _thread import *
-from TCG_classes import Player
+from data.TCG_classes import Player
+from TCG_config import server_ip
 import pickle
 
-server = "192.168.0.5"
+server = server_ip
 port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
